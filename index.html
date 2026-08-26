@@ -135,8 +135,8 @@ const update=()=>{const note=$('#livePaper'),hasScripture=state.scripture.trim()
         // Writing lines
         let firstLine=2.55;
         let lastLine=10.25;
-        if(hasScripture&&state.position==='top') firstLine=3.65;
-        if(hasScripture&&state.position==='bottom') lastLine=8.75;
+        if(hasScripture&&state.position==='top') firstLine=4.15;
+        if(hasScripture&&state.position==='bottom') lastLine=8.35;
 
         doc.setDrawColor(216,208,224);
         doc.setLineWidth(0.012);
@@ -146,24 +146,33 @@ const update=()=>{const note=$('#livePaper'),hasScripture=state.scripture.trim()
 
         // Scripture
         if(hasScripture){
+          // jsPDF uses points for font size even when the document unit is inches.
+          // Keep scripture at a true physical 14pt size in the downloaded PDF.
           doc.setFont('times','italic');
           doc.setFontSize(14);
-          const scriptureFontSizePt=14;
           doc.setTextColor(ar,ag,ab);
 
-          const verse=doc.splitTextToSize(state.scripture,6.7);
-          const y=state.position==='top'?3.05:9.15;
-          doc.text(verse,W/2,y,{align:'center',maxWidth:6.7});
+          const scriptureWidthIn=6.75;
+          const verse=doc.splitTextToSize(state.scripture,scriptureWidthIn);
+
+          // 14pt text = 14/72 inch. Use a comfortable 1.35 line-height.
+          const lineHeightIn=(14/72)*1.35;
+          const verseHeightIn=Math.max(1,verse.length)*lineHeightIn;
+          const verseTop=state.position==='top'?3.25:(8.65-verseHeightIn);
+
+          doc.text(verse,W/2,verseTop,{
+            align:'center',
+            maxWidth:scriptureWidthIn,
+            lineHeightFactor:1.35
+          });
 
           doc.setFont('helvetica','bold');
           doc.setFontSize(8);
           doc.setTextColor(95,79,96);
-          doc.text(
-            state.reference||'',
-            W/2,
-            y+(verse.length*0.22)+0.12,
-            {align:'center'}
-          );
+          const refY=verseTop+verseHeightIn+0.08;
+          if(state.reference){
+            doc.text(state.reference,W/2,refY,{align:'center'});
+          }
         }
 
         // Artwork over text
