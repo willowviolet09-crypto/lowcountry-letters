@@ -44,7 +44,7 @@
         <div class="control"><label>Corner decoration</label><div class="choice-row" id="decorations"><button type="button" class="choice selected" data-decor="✿">Flowers</button><button type="button" class="choice" data-decor="☾">Moon</button><button type="button" class="choice" data-decor="♡">Hearts</button><button type="button" class="choice" data-decor="★">Stars</button><button type="button" class="choice" data-decor="">None</button></div></div>
         <div class="control"><label for="artInput">Add your own tiny artwork</label><input id="artInput" type="file" accept="image/*"><div class="range-label"><span>Move left ↔ right</span><span id="artXValue">84%</span></div><input id="artX" type="range" min="8" max="92" value="84"><div class="range-label"><span>Move up ↕ down</span><span id="artYValue">22%</span></div><input id="artY" type="range" min="8" max="92" value="22"><div class="range-label"><span>Artwork size</span><span id="artSizeValue">100%</span></div><input id="artSize" type="range" min="40" max="180" value="100"><div class="choice-row"><button type="button" class="choice selected" id="artFront">Over text</button><button type="button" class="choice" id="artBack">Behind text</button><button type="button" class="choice" id="removeArt">Remove image</button></div><p class="fine">Position it anywhere, make it larger or smaller, or let it sit softly behind the words.</p></div>
         <div class="control"><label for="scriptureText">Scripture text <span class="fine">optional</span></label><textarea id="scriptureText" maxlength="170" placeholder="Paste a short verse from jw.org"></textarea><input id="scriptureReference" type="text" maxlength="50" placeholder="Reference, e.g. Psalm 34:18"><select id="scripturePosition" aria-label="Scripture position"><option value="top">Place scripture above the lines</option><option value="bottom">Place scripture below the lines</option></select><select id="scriptureFont" aria-label="Scripture font"><option value="Playfair Display">Classic serif scripture</option><option value="Georgia">Gentle Georgia</option><option value="cursive">Handwritten script</option><option value="DM Sans">Clean modern</option></select><p class="fine">A short verse keeps plenty of room for writing. <a href="https://www.jw.org/en/library/bible/" target="_blank" rel="noopener">Find a verse on jw.org ↗</a></p></div>
-        <div class="studio-actions"><button class="btn" id="downloadButton">Download PDF</button><button class="btn dark" id="printButton">Print paper</button><button class="btn dark" id="publishButton">Share as a template</button></div><p class="fine">The PDF downloads as standard U.S. Letter size (8.5 × 11 inches). When printing, choose Letter paper and keep scaling at 100%.</p>
+        <div class="studio-actions"><button type="button" class="btn" id="downloadButton">Download PDF</button><button type="button" class="btn dark" id="printButton">Print paper</button><button type="button" class="btn dark" id="publishButton">Share as a template</button></div><p class="fine">The PDF downloads as standard U.S. Letter size (8.5 × 11 inches). When printing, choose Letter paper and keep scaling at 100%.</p>
       </aside><div><div class="paper-stage"><article class="paper-note" id="livePaper" aria-label="Your customized letter paper"><span class="corner tl">✿</span><span class="corner tr">✿</span><span class="corner bl">✿</span><span class="corner br">✿</span><img class="art-stamp" id="artStamp" alt="Your uploaded artwork"><h3 class="note-heading" id="paperTitle">A little note</h3><div class="note-subtitle" id="paperSubtitle">just for you</div><div class="scripture" id="scripture"><span id="scriptureWords"></span><cite id="scriptureRef"></cite></div><div class="writing-lines" aria-label="Full-page writing area"></div></article></div><p class="print-note"><strong>Full-page writing area</strong> without a scripture; a short scripture keeps a comfortable note space.</p></div></div>
     </section>
     <section class="community" id="community"><div class="community-inner"><div class="community-top"><div><div class="section-kicker">Shared with love</div><h2>Customize a community template.</h2></div><a class="btn dark" href="#studio">Make your own →</a></div><div class="gallery" id="gallery"><article class="template"><div class="template-paper" style="--tpaper:#fff4f6;--taccent:#dd758e"><span>🍓</span><h3>Berry sweet</h3></div><h3>Berry sweet</h3><p>by Mila · blush &amp; cheerful</p><button class="customize" data-template="Berry sweet" data-sub="a sunny hello" data-paper="#fff4f6" data-accent="#dd758e" data-decor="♡">Customize this</button></article><article class="template"><div class="template-paper" style="--tpaper:#effaf0;--taccent:#699879"><span>✿</span><h3>Garden hello</h3></div><h3>Garden hello</h3><p>by Ruby · fresh &amp; floral</p><button class="customize" data-template="Garden hello" data-sub="sent with love" data-paper="#effaf0" data-accent="#699879" data-decor="✿">Customize this</button></article><article class="template"><div class="template-paper" style="--tpaper:#f3efff;--taccent:#856db1"><span>☾</span><h3>Moon mail</h3></div><h3>Moon mail</h3><p>by Ari · soft &amp; starry</p><button class="customize" data-template="Moon mail" data-sub="a little magic" data-paper="#f3efff" data-accent="#856db1" data-decor="☾">Customize this</button></article><article class="template"><div class="template-paper" style="--tpaper:#fffaf0;--taccent:#d08845"><span>★</span><h3>Golden note</h3></div><h3>Golden note</h3><p>by June · warm &amp; bright</p><button class="customize" data-template="Golden note" data-sub="made with care" data-paper="#fffaf0" data-accent="#d08845" data-decor="★">Customize this</button></article></div><p class="share-status" id="shareStatus" aria-live="polite"></p></div></section>
@@ -52,7 +52,7 @@
   <dialog id="authDialog"><form id="authForm" style="width:min(340px,85vw);padding:8px"><button type="button" id="closeAuth" style="float:right;border:0;background:none;font-size:20px">×</button><h2 style="font:600 28px 'Playfair Display';margin:12px 0">Welcome to Lowcountry Letters</h2><p class="fine">Sign in to save, share, and delete your own templates.</p><label class="fine" for="authEmail">Email</label><input id="authEmail" type="email" required style="width:100%;padding:10px;margin:4px 0 12px"><label class="fine" for="authPassword">Password</label><input id="authPassword" type="password" required minlength="8" style="width:100%;padding:10px;margin:4px 0 14px"><div class="choice-row"><button class="btn" type="submit" id="signInButton">Sign in</button><button type="button" class="choice" type="button" id="signUpButton">Create account</button></div><p class="fine" id="authMessage" aria-live="polite"></p></form></dialog>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>window.LOWCOUNTRY_SUPABASE={url:'https://rkscncoxpxabyzmlqjxt.supabase.co',key:'sb_publishable_6YCvauzMaAzTO2lr4qWR2w_52LogYxA'};</script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
   <script>
     const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
     const db=window.supabase?.createClient ? window.supabase.createClient(window.LOWCOUNTRY_SUPABASE.url,window.LOWCOUNTRY_SUPABASE.key) : null;
@@ -86,8 +86,8 @@ const update=()=>{const note=$('#livePaper'),hasScripture=state.scripture.trim()
     const addArt=(doc,behind=false)=>{if(!state.art||behind!==(state.artLayer==='back'))return;try{const [pw,ph]=PAPER_SIZES[state.paperSize],size=Math.min(pw,ph)*.162*Number(state.artSize)/100,x=Number(state.artX)*pw/100-size/2,y=Number(state.artY)*ph/100-size/2;doc.addImage(state.art,state.art.startsWith('data:image/png')?'PNG':'JPEG',x,y,size,size)}catch(e){}};
     $('#downloadButton').addEventListener('click',async()=>{
       const button=$('#downloadButton');
-      if(!window.jspdf){
-        alert('The PDF maker is still loading. Please try again in a moment.');
+      if(!window.jspdf || !window.jspdf.jsPDF){
+        alert('The PDF maker did not load. Please refresh the page and try again.');
         return;
       }
 
@@ -173,7 +173,16 @@ const update=()=>{const note=$('#livePaper'),hasScripture=state.scripture.trim()
           .replace(/^-|-$/g,'')
           .toLowerCase() || 'letter';
 
-        doc.save('lowcountry-letters-'+safe+'.pdf');
+        const pdfBlob=doc.output('blob');
+        const pdfUrl=URL.createObjectURL(pdfBlob);
+        const link=document.createElement('a');
+        link.href=pdfUrl;
+        link.download='lowcountry-letters-'+safe+'.pdf';
+        link.style.display='none';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(()=>URL.revokeObjectURL(pdfUrl),1000);
       }catch(error){
         console.error(error);
         alert('The PDF could not be created. Please try again.');
