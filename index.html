@@ -124,43 +124,43 @@ const update=()=>{const note=$('#livePaper'),hasScripture=state.scripture.trim()
         // Heading
         doc.setTextColor(ar,ag,ab);
         doc.setFont('times','bold');
-        doc.setFontSize(30);
-        doc.text(state.title||'A little note',W/2,1.42,{align:'center',maxWidth:6.8});
+        doc.setFontSize(22);
+        doc.text(state.title||'A little note',W/2,1.35,{align:'center',maxWidth:6.5});
 
         doc.setTextColor(125,108,125);
         doc.setFont('helvetica','normal');
-        doc.setFontSize(8);
-        doc.text(state.subtitle||'',W/2,1.82,{align:'center',maxWidth:6.8});
+        doc.setFontSize(6);
+        doc.text(state.subtitle||'',W/2,1.68,{align:'center',maxWidth:6.5});
 
         // Writing lines
-        let firstLine=2.55;
-        let lastLine=10.25;
+        let firstLine=2.45;
+        let lastLine=10.35;
         if(hasScripture&&state.position==='top') firstLine=3.65;
         if(hasScripture&&state.position==='bottom') lastLine=8.75;
 
         doc.setDrawColor(216,208,224);
         doc.setLineWidth(0.012);
-        for(let y=firstLine;y<=lastLine;y+=0.36){
+        for(let y=firstLine;y<=lastLine;y+=0.31){
           doc.line(0.65,y,7.85,y);
         }
 
         // Scripture
         if(hasScripture){
           doc.setFont('times','italic');
-          doc.setFontSize(12);
+          doc.setFontSize(9);
           doc.setTextColor(ar,ag,ab);
 
-          const verse=doc.splitTextToSize(state.scripture,6.7);
+          const verse=doc.splitTextToSize(state.scripture,6.8);
           const y=state.position==='top'?3.05:9.15;
-          doc.text(verse,W/2,y,{align:'center',maxWidth:6.7});
+          doc.text(verse,W/2,y,{align:'center',maxWidth:6.8});
 
           doc.setFont('helvetica','bold');
-          doc.setFontSize(8);
+          doc.setFontSize(6);
           doc.setTextColor(95,79,96);
           doc.text(
             state.reference||'',
             W/2,
-            y+(verse.length*0.22)+0.12,
+            y+(verse.length*0.17)+0.08,
             {align:'center'}
           );
         }
