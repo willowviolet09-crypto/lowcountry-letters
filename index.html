@@ -20,7 +20,7 @@
       .paper-note{width:100%;height:auto;aspect-ratio:var(--paper-ratio,74/105);box-shadow:none;border-radius:0;padding:7mm 6mm 5mm;print-color-adjust:exact;-webkit-print-color-adjust:exact}
       .note-heading{font-size:22pt;margin:.45in 0 .08in}.note-subtitle{font-size:6pt}
       .writing-lines{left:.6in;right:.6in;top:2.15in;bottom:.5in;background:repeating-linear-gradient(to bottom,transparent 0 4.5mm,var(--line) 4.7mm 5mm)}
-      .scripture{left:.6in;right:.6in;font-size:9pt}.scripture cite{font-size:5pt}
+      .scripture{left:.6in;right:.6in;font-size:14pt}.scripture cite{font-size:9pt}
       .has-scripture-top .scripture{top:35mm}.has-scripture-top .writing-lines{top:49mm}
       .has-scripture-bottom .scripture{bottom:5mm}.has-scripture-bottom .writing-lines{bottom:17mm}
       .has-scripture-bottom .corner.bl{top:19mm;bottom:auto;font-size:16pt}.has-scripture-bottom .corner.br{top:19mm;bottom:auto;font-size:16pt}
@@ -147,7 +147,7 @@ const update=()=>{const note=$('#livePaper'),hasScripture=state.scripture.trim()
         // Scripture
         if(hasScripture){
           doc.setFont('times','italic');
-          doc.setFontSize(12);
+          doc.setFontSize(14);
           doc.setTextColor(ar,ag,ab);
 
           const verse=doc.splitTextToSize(state.scripture,6.7);
